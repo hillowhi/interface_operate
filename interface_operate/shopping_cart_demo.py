@@ -17,7 +17,7 @@ login_response = login_r.json()
 # hea = login_r.headers
 # print(hea)
 # print(type(hea))
-# print(login_r.text)
+print(login_r.text)
 token_list = jsonpath.jsonpath(login_response, "$.data..token")
 token = token_list[0]
 # 添加到购物车
