@@ -6,46 +6,46 @@ import requests
 #     "imgCode": ""
 # }
 
-# r = requests.post("https://broker-dev.mklij.com/broker-api/loginByEmpNoOrPwd", json=data)
-# print(type(r))
-# print(r)
-# print(r.status_code)
+# login_r = requests.post("https://broker-dev.mklij.com/broker-api/loginByEmpNoOrPwd", json=data)
+# print(type(login_r))
+# print(login_r)
+# print(login_r.status_code)
 # print("--------------------------------------------------------------------------")
-# print(r.content)
+# print(login_r.content)
 
-# print(r.text)
-# print(r.url)
-# token = r["data"]
+# print(login_r.text)
+# print(login_r.url_login)
+# token = login_r["data"]
 # print(token)
-# print(r.encoding)
+# print(login_r.encoding)
 # 只有字典格式的返回值才可以通过关键字取值 即使返回值是json格式 返回的数据类型依旧可能是string 所以必须确定返回值类型
-# response = r.json()
+# response = login_r.json()
 # print(response)
-# print(type(r.json()))
-# print(r.text)
-# print(type(r.text))
-# print(r.content.decode(encoding="UTF-8"))
-# print(type(r.content.decode(encoding="UTF-8")))
+# print(type(login_r.json()))
+# print(login_r.text)
+# print(type(login_r.text))
+# print(login_r.content.decode(encoding="UTF-8"))
+# print(type(login_r.content.decode(encoding="UTF-8")))
 
-# print(r.raw)
-# print(r.raw.read(10))
-# print(r.iter_content)
+# print(login_r.raw)
+# print(login_r.raw.read(10))
+# print(login_r.iter_content)
 
-# with open(r.iter_content, "wb") as fd:
-#     for chunk in r.iter_content(chunk_size=128):
+# with open(login_r.iter_content, "wb") as fd:
+#     for chunk in login_r.iter_content(chunk_size=128):
 #         fd.write(chunk)
 
 # login_data = {
 #     "username": "lihh",
 #     "password": "huange521"
 # }
-# url = ("http://shop-xo.hctestedu.com/index,php?s=api/user/login")
-# print(r.status_code)
-# print(r.text)
-# print(r.content.decode(encoding="UTF-8"))
+# url_login = ("http://shop-xo.hctestedu.com/index,php?s=api/user/login")
+# print(login_r.status_code)
+# print(login_r.text)
+# print(login_r.content.decode(encoding="UTF-8"))
 # print(response)
 # print(type(response))
-# print(r.request.url)
+# print(login_r.request.url_login)
 # token = response["data"]["employeeDTO"]["token"]
 # print(token)
 # assert 200 == response["code"]
