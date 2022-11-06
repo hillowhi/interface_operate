@@ -6,9 +6,8 @@ import allure
 错误代码
 """
 
-
 # def request_type(request_type):
-#     if request_typue == "get":
+#     if request_type == "get":
 #         def get(url, params=None, **kwargs):
 #             return requests.get(url=url, params=params, **kwargs)
 #     elif request_type == "post":
@@ -48,23 +47,27 @@ class InterfaceOperate:
         assert expect_response == assert_message[0]
 
 
-def main():
-    key = InterfaceOperate()
-    params = {
-        "application": "app",
-        "application_client_type": "weixin"
-    }
-    url_login = "http://shop-xo.hctestedu.com/index.php?s=api/user/login"
-    login_data = {
-        "accounts": "lihuanhuan",
-        "pwd": "huange521",
-        "type": "username"
-    }
-    post_res = key.post(url_login, json=login_data, params=params)
-    response1 = key.res_request(post_res)
-    assert_request1 = key.assert_func("$..msg", response1, "登录成功")
+"""
+隐藏调用案例
 
+"""
 
-if __name__ == "__main__":
-    main()
-
+# def main():
+#     key = InterfaceOperate()
+#     params = {
+#         "application": "app",
+#         "application_client_type": "weixin"
+#     }
+#     url_login = "http://shop-xo.hctestedu.com/index.php?s=api/user/login"
+#     login_data = {
+#         "accounts": "lihuanhuan",
+#         "pwd": "huange521",
+#         "type": "username"
+#     }
+#     post_res = key.post(url_login, json=login_data, params=params)
+#     response1 = key.res_request(post_res)
+#     key.assert_func("$..msg", response1, "登录成功")
+#
+#
+# if __name__ == "__main__":
+#     main()
