@@ -6,8 +6,8 @@
 > ..表示获取所有符合条件的内容
 
 > *表示所有元素节点 
->data = jsonpath.jsonpath("$.book[?(@.price>10)]")  只返回price
->data = jsonpath.jsonpath("$.*[?(@.price>10)]")  返回所有符合条件的所有节点
+>data = jsonpath.jsonpath(response_dict, "$.book[?(@.price>10)]")  只返回price
+>data = jsonpath.jsonpath(response_dict, "$.*[?(@.price>10)]")  返回所有符合条件的所有节点
  
 
 >[]表示迭代器的标示
