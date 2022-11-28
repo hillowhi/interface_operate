@@ -1,0 +1,12 @@
+[pytest]
+# 命令参数行 加载到默认执行过程
+addopts = -v -s --html=html_report.html
+#运行指定测试文件目录
+testpaths = ./test_child_package
+#指定要运行的测试文件名规则
+python_files = auto*.py
+#通过名称模糊匹配指定运行的测试类 Auto_* B_* 过滤条件可叠加
+python_classes = Test_pre_rear_fun
+#通过名称匹配指定用例
+python_functions  = *_test
+
