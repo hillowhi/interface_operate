@@ -42,6 +42,7 @@ from selenium import webdriver
 @pytest.fixture
 def get_browser():
     driver = webdriver.Chrome()
+    driver.maximize_window()
     yield driver
     time.sleep(6)
     # 后置操作 关闭浏览器

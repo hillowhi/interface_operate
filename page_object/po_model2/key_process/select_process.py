@@ -19,3 +19,9 @@ class SelectProcess(KeyWordWebClass):  # 类的继承
         # self.select_by_any(*SELECT_OBJECT_VALUE)  # 神奇 这样就行了
         self.select_by_any(*SELECT_ELEMENT, SELECT_WAY,  SELECT_TEXT, )
         sleep(3)
+
+    def key_send(self, key):
+        self.open_browser(URL)
+        self.clear_send_search(*SEARCH_BOX, TEXT_NOVEL)
+        self.key_down(key)
+        sleep(2)

@@ -19,7 +19,7 @@ class KeyWordWebClass():
     # 只需要接收driver 然后运用就好 所以需要在构造函数里接收一下这个driver对象
     def __init__(self, driver):
         self.driver = driver
-        self.wait = WebDriverWait(driver, 5)
+        self.wait = WebDriverWait(driver, 10)
         # 这里初始化一个wait 对象，用于后面打开浏览器校验当前的url是否正确打开确保后续操作页面准确
         # 如果觉得打出来自带方法太麻烦可以先初始化一个driver对象，写完再删掉
         # self.driver = webdriver.Chrome()
@@ -46,6 +46,26 @@ class KeyWordWebClass():
         # 调用locator_station 方法 将定位元素展示出来
         # 这里调用下面封装好的高亮方法 就不需要在key_page_object_test里面调用
         # self.locator_station(el)
+        return el
+
+    # 定位+显示等待方法封装 这里的等待就可以复用构造方法里声明的wait
+    def wait_locat(self, name, value):
+        # 这里传参如果是分开写的 name value,那么参数必须分开写字符串 不能封成一个list
+        # 因为下面用到了ec.visibility_of_element_located，
+        # 这个方法的传参必须要把参数打包，所以如果调用的时候用的是封装好的参数，就会被二次封装
+        location = (name, value)
+        print(location)
+        self.wait.until(ec.visibility_of_element_located(location))
+        # 这里必须
+        el = self.driver.find_element(name, value)  # 为啥课程案例要分开写 name,value,我就这么写
+        # self.locator_station(el)
+        return el
+
+    # wait_locat 第二种写法2：不行
+
+    def wait_locat1(self, *name_value):
+        self.wait.until(ec.visibility_of_element_located(*name_value))
+        el = self.driver.find_element(*name_value)
         return el
 
     # 对定位元素高亮展示 ele指被定位元素
@@ -100,3 +120,19 @@ class KeyWordWebClass():
             select_object.select_by_visible_text(text)
         else:
             print('请输入value，index，text任意一种选择方式')
+
+        '''
+        封装键位操作，某个键按下去效果 该例子模拟回车键 
+        注释不能定格写 顶格写意味着下面的代码不是在类里面
+        '''
+
+    # 按下某个键操作 例如回车
+    def key_down(self, key):
+        # ActionChains(self.driver).key_down(Keys.key).perform()
+        # 这里的key是参数化 这么写可以看出函数里参数key并没有被引用，参数化失败 因为Keys库里面没有关键字key
+        # 思考🤔  已经定义好参数范围的内置函数不能参数化吗？？
+        ActionChains(self.driver).key_down(eval(f'Keys.{key}')).perform()
+        # 所以这里只能用通配符，但是通配符会把Keys类当成字符串处理 所以就需要祭出eval()函数！很牛👍 识别各种关键字符和内置、自定义函数 嘎嘎好
+
+    # 输入并点击操作 这个方法代码量本来就不多封装起来不划算🤔
+    # def send_click(self):
