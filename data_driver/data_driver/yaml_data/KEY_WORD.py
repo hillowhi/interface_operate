@@ -11,6 +11,10 @@ PAY_USERNAME = '15224880595'
 PAY_PASSWORD = 'huange521'
 
 # 充值按钮
-PAY_BUTTON = ['xpath', "//li[4]//a"]
+PAY_BUTTON = ['xpath', "//li//a[text()='充值']"]
 # 充值页面 充值金额按钮
-PAY_MONEY = ['xpath', "//li[@vals][3]"]
+PAY_MONEY = ['xpath', "//li[@vals = '50']"]
+# 502 Bad GateWay文本定位
+PAY_PAGE_BAD_GATEWAY = ['xpath', "/h1"]
+# 支付宝登陆页面跳转成功校验
+PAY_PAGE_LOGIN = ['xpath', "//p[text() ='登录支付宝账户付款']"]

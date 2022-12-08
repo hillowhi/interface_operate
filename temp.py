@@ -50,6 +50,10 @@ import requests
 #
 # c = C(1, 1)
 
+'''
+异常处理重试机制
+'''
+
 # 下载重试机制:设置重试次数
 # def loading_retry(url, n):
 #     for i in range(0, n):
@@ -65,15 +69,19 @@ import requests
 # loading_retry('https://baidu1.com/', 3)
 
 # 下载重试机制:无次数限制，重试到成功为止
-def loading_retry_success(url):
-    while True:
-        try:
-            # print(1)
-            requests.get(url)  # 如果这一步报错，那么这部代码下面的都不会走
-            print('如果上一步报错，那么这步将不会运行')
-            break
-        except requests.exceptions.ConnectionError:
-            print('路径异常')
+# def loading_retry_success(url):
+#     while True:
+#         try:
+#             # print(1)
+#             requests.get(url)  # 如果这一步报错，那么这部代码下面的都不会走
+#             print('如果上一步报错，那么这步将不会运行')
+#             break
+#         except requests.exceptions.ConnectionError:
+#             print('路径异常')
+#
+#
+# loading_retry_success('https://baidu1.com/')
 
-
-loading_retry_success('https://baidu1.com/')
+from selenium import webdriver
+driver = webdriver.Chrome()
+alert = driver.switch_to.alert()
