@@ -31,7 +31,7 @@ print(token1)
 # print(str1[1])
 
 headers = {
-    "authorization": str3
+    "authorization": token1
 }
 property_list = {
     "privy": "公盘",

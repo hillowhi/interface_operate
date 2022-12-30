@@ -22,6 +22,11 @@ def get_browser():
     driver.quit()
 
 
+'''
+以下这一串都是设置allure的目前看不懂
+'''
+
+
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport():
     # 获取测试用例执行结果，yield,返回一个result对象

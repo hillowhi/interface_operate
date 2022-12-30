@@ -19,7 +19,8 @@ import pytest
 #         input_username()
 #         input_password()
 #         assert 1 == 2
-from allure_report_po.conftest import get_browser
+from allure_report_po.KeyValue import KEY_VALUE
+from allure_report_po.logic_service.logic_login import SetUpLogic
 
 
 def test_title_compare(get_browser):
@@ -29,3 +30,23 @@ def test_title_compare(get_browser):
     driver.find_element('id', 'su').click()
     title = driver.title
     assert title == '大笨钟-百度搜索'  # 实际是 大笨钟_百度搜索
+
+
+@pytest.fixture(scope='session')
+def login_fix():
+    with allure.step('前置登录辣'):
+        setup_login = SetUpLogic
+        setup_login.login(*KEY_VALUE.LOCATER)
+
+
+@allure.title("登录流程用例")
+def test_login():
+    """
+            用例步骤：
+            1.登录
+            2.浏览商品
+            3.添加商品
+            4.购物车结算
+    """
+    with allure.step('浏览商品'):
+        assert 1 == 2
